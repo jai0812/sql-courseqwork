@@ -6,7 +6,7 @@
 --          and data anomalies
 -- =========================================
 
-
+-- Everything will be detailed
 /* 
    SECTION 1: ABSOLUTE FUNDAMENTALS
 */
