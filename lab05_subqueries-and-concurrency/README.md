@@ -44,3 +44,31 @@ I’m working with a small retail-style dataset where products are sold across m
 | product_name      |          | FK product_id
 | price_in_usd      |          | name
 +-------------------+          +-------------------+
+
+
+What I Built / Explored
+1) “Sold in ALL stores” logic (the main use case)
+
+  I implemented the same requirement multiple ways to compare query styles:
+
+  IN + GROUP BY + HAVING COUNT(DISTINCT ...)
+
+  Derived table in the FROM clause
+  Correlated NOT EXISTS (classic “for all” pattern)
+
+  A VIEW to make the logic reusable and cleaner
+  This helped me see how different SQL structures can solve the same logical problem.
+
+2) Correlated subqueries (how they really run)
+
+  I focused on understanding that correlated subqueries execute in the context of the outer query (often “per row”), which is different from uncorrelated subqueries that can be computed once.
+
+3) Concurrency (conceptual)
+
+  I documented schedules to understand:
+  Dirty reads / uncommitted dependency
+  How locking can force waiting on writes
+
+How MVCC changes what a transaction reads (reads committed versions, not uncommitted writes)
+
+Key idea I learned: Locking controls write conflicts. MVCC controls read visibility.
